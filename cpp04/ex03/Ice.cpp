@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:28:05 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/03 11:20:50 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:54:25 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 Ice::Ice() : AMateria("ice") { };
 
 Ice::Ice(const Ice & obj) {
-    type = obj.type;
     *this = obj;
 }
 
 Ice & Ice::operator=(const Ice & obj) {
-    if(this == &obj)
-        return *this;
+    (void)obj;
     return *this;
 }
 

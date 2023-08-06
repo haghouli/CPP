@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hicham <hicham@student.42.fr>              +#+  +:+       +#+        */
+/*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:49:36 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/02 15:35:35 by hicham           ###   ########.fr       */
+/*   Updated: 2023/08/06 08:55:43 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <iostream>
+#include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -43,6 +45,8 @@ class Bureaucrat
 			public:
 				const char *	what() const throw();
 		};
+
+		void	executeForm(AForm const & form);
 };
 
 #endif

@@ -6,16 +6,16 @@
 #    By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/01 10:35:18 by haghouli          #+#    #+#              #
-#    Updated: 2023/08/05 15:30:35 by haghouli         ###   ########.fr        #
+#    Updated: 2023/08/06 10:15:26 by haghouli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SANITIZER 	= -fsanitize=address
 CPPFLAGS 	= -Wall -Wextra -Werror -g
 CXX 		= c++ -std=c++98
-NAME		= ex01
+NAME		= ex02
 
-CPP_FILES 	= main.cpp Bureaucrat.cpp Form.cpp
+CPP_FILES 	= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 CPP_OBJS 	= $(CPP_FILES:.cpp=.o)
 

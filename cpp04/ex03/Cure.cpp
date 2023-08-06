@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:30:50 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/03 11:20:30 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/06 15:54:54 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 Cure::Cure() : AMateria("cure") { };
 
 Cure::Cure(const Cure & obj) {
-    type = obj.type;
     *this = obj;
 }
 
 Cure & Cure::operator=(const Cure & obj) {
-    if(this == &obj)
-        return *this;
+    (void)obj;
     return *this;
 }
 

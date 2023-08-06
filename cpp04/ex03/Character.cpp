@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 09:59:12 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/03 12:21:58 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/05 10:37:42 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,10 @@ Character & Character::operator=(const Character & obj) {
     if(this == &obj)
         return *this;
 
-    for(int i = 0; i < equiped_materia_cout; i++)
-        delete [] equiped_materia[i];
-
     name = obj.name;
     equiped_materia_cout = obj.equiped_materia_cout;
     for(int i = 0; i < equiped_materia_cout; i++) {
-        AMateria *m;
-        if(obj.equiped_materia[i]->getType().compare("cure"))
-            m = new Cure();
-        else
-            m = new Ice();
-        *m = *(obj.equiped_materia[i]);
-        equiped_materia[i] = m;
+        equiped_materia[i] = obj.equiped_materia[i];
     }
     return *this;
 };
@@ -72,7 +63,10 @@ void Character::equip(AMateria* m) {
 
 void Character::unequip(int idx) {
     if(idx <= 3) {
-        equiped_materia[idx] = NULL;
+        if(equiped_materia[idx] != NULL)
+            equiped_materia[idx] = NULL;
+        else
+            std::cout << "Slot is Already Empty Nothing to unequip" << std::endl;
     }
     else
         std::cout << "Invalid slot index" << std::endl;
