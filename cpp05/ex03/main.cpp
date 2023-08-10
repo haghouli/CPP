@@ -6,39 +6,37 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:36:38 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/06 11:43:46 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/09 11:34:57 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main(void) {
 
-	{
-		ShrubberyCreationForm sh("Home");
-		Bureaucrat b1("Bureaucrat_1", 120);
-
-		sh.beSigned(b1);
-		b1.executeForm(sh);
+	Bureaucrat	b1("Bureacrat_1", 2);
+	Intern		someRandomIntern;
+	AForm*	rrf = someRandomIntern.makeForm("presidental pardon", "Bender1");
+	AForm*	rrf1 = someRandomIntern.makeForm("robotomy request", "Bender2");
+	AForm*	rrf2 = someRandomIntern.makeForm("presidential pardon", "Bender3");
+	
+	if(rrf) {
+		rrf->beSigned(b1);
+		rrf->execute(b1);
+		delete rrf;
 	}
-
-	std::cout << "*********************************" << std::endl;
-	{
-		RobotomyRequestForm rb("Home");
-		Bureaucrat b1("Bureaucrat_1", 120);
-
-		rb.beSigned(b1);
-		b1.executeForm(rb);
+	
+	if(rrf1) {
+		rrf1->beSigned(b1);
+		rrf1->execute(b1);
+		delete rrf1;
 	}
-
-	std::cout << "*********************************" << std::endl;
-	{
-		PresidentialPardonForm pr("Home");
-		Bureaucrat b1("Bureaucrat_1", 120);
-
-		pr.beSigned(b1);
-		b1.executeForm(pr);
+	
+	if(rrf2) {
+		rrf2->beSigned(b1);
+		rrf2->execute(b1);
+		delete rrf2;
 	}
+	system("leaks ex03");
+	return 0;
 }
