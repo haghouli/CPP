@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 11:47:16 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/09 11:26:26 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 11:31:30 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ AForm *	Intern::makeForm(std::string formName, std::string target) {
         std::cout << "Intern creates " <<  form->getName() << std::endl;
         return form;
     } catch(const char * msg) {
-        std::cout << msg << std::endl;
+        throw;
     }
     return NULL;
 }

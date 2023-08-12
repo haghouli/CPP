@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:36:38 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/04 11:15:21 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:13:32 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,18 @@
 
 int main(void) {
 	
-	Bureaucrat	b1("Bureaucrat_1", 1);
-	Bureaucrat b2("Bureaucrat_2", 150);
+	try {
+		Bureaucrat	b1("Bureaucrat_1", 5);
 
-	std:: cout << b1.getGrade() << std::endl;
-	std:: cout << b2.getGrade() << std::endl;
-	
-	b1.setGrade(0);
-	b2.setGrade(152);
-
-	std:: cout << b1.getGrade() << std::endl;
-	std:: cout << b2.getGrade() << std::endl;
-
-	b1.increment();
-	b2.decrement();
-
-	std:: cout << b1.getGrade() << std::endl;
-	std:: cout << b2.getGrade() << std::endl;
-
-	b1.decrement();
-	b2.increment();
-
-	std:: cout << b1.getGrade() << std::endl;
-	std:: cout << b2.getGrade() << std::endl;
+		std:: cout << b1 << std::endl;
+		b1.setGrade(2);
+		std:: cout << b1 << std::endl;
+		b1.increment();
+		std:: cout << b1 << std::endl;
+		b1.increment();
+		std:: cout << b1 << std::endl;
+	} catch(std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 
 }

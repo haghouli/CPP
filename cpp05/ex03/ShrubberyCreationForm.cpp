@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 20:12:12 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/06 08:35:02 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:28:29 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm & obj) 
 	*this = obj;
 };
 
-ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm & obj) {
+ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm & obj)  {
 	if(this == &obj)
 		return *this;
 	is_signed = obj.is_signed;
-	grade_to_be_signed = obj.grade_to_be_signed;
-	grade_to_be_executed = obj.grade_to_be_executed;
 	return *this;
 }
 

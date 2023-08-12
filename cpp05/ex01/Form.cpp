@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 19:59:31 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/05 19:59:33 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 09:42:37 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,20 @@ const char * Form::GradeTooLowException::what() const throw() {
 
 Form::Form() : name("unamed"), is_signed(false), grade_to_be_signed(150), grade_to_be_executed(150) { }
 
-Form::Form(std::string name, int signeGrade, int executedGrade) : name(name) , is_signed(false) {
-	setGradeToBeSigned(signeGrade);
-	setGradeToBeExecuted(executedGrade);
+Form::Form(std::string name, int signeGrade, int executedGrade) : name(name) , is_signed(false), grade_to_be_signed(signeGrade), grade_to_be_executed(executedGrade) {
+	if(grade_to_be_executed > 150 || grade_to_be_signed > 150)
+		throw GradeTooLowException();
+	else if(grade_to_be_executed < 1 || grade_to_be_signed < 1)
+		throw GradeTooHighException();
 }
 
-Form::Form(const Form & obj) {
+Form::Form(const Form & obj) : name(obj.name) , is_signed(false),grade_to_be_signed(obj.grade_to_be_signed), grade_to_be_executed(obj.grade_to_be_executed){
 	*this = obj;	
 }
 
 Form & Form::operator=(const Form & obj) {
 	if(this == &obj)
 		return *this;
-	is_signed = obj.is_signed;
-	grade_to_be_signed = obj.grade_to_be_signed;
-	grade_to_be_executed = obj.grade_to_be_executed;
 	return *this;
 }
 
@@ -58,53 +57,15 @@ int			Form::getGRadeToBeExecuted() const {
 	return grade_to_be_executed;
 };
 
-void	Form::setGradeToBeSigned(int grade) {
-	try {
-		if(grade > 150)
-			throw Form::GradeTooLowException();
-		else if(grade < 1)
-			throw Form::GradeTooHighException();
-		else
-			grade_to_be_signed = grade;
-	} catch(std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
-}
-
-void	Form::setGradeToBeExecuted(int grade) {
-	try {
-		if(grade > 150)
-			throw Form::GradeTooLowException();
-		else if(grade < 1)
-			throw Form::GradeTooHighException();
-		else
-			grade_to_be_executed = grade;
-	} catch(std::exception & e) {
-		std::cout << e.what() << std::endl;
-	}
-}
-
-
 void	Form::beSigned(const Bureaucrat & obj) {
-	try {
-		if(obj.getGrade() > grade_to_be_signed)
-			throw Form::GradeTooLowException();
-		else {
-			signForm(obj);
-		}
-	}
-	catch(Form::GradeTooLowException & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (const std::string & msg) {
-		std::cout << msg << std::endl;
-	}
+	if(obj.getGrade() > grade_to_be_signed)
+		throw Form::GradeTooLowException();
+	signForm(obj);
 }
 
 void	Form::signForm(const Bureaucrat & obj) {
 	if(is_signed)
-		throw (obj.getName() + " couldn’t sign " + name + " because the form is already signed");
+		std::cout << obj.getName() + " couldn’t sign " + name + " because the form is already signed" << std::endl;
 	else {
 		is_signed = true;
 		std::cout << obj.getName() << " signed " << name << std::endl;

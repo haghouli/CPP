@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 09:20:04 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/06 10:02:45 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:28:40 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 	if(this == &obj)
 		return *this;
 	is_signed = obj.is_signed;
-	grade_to_be_signed = obj.grade_to_be_signed;
-	grade_to_be_executed = obj.grade_to_be_executed;
 	return *this;
 }
 

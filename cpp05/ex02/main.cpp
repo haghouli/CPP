@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:36:38 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/06 11:43:46 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:41:01 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,46 @@
 int main(void) {
 
 	{
-		ShrubberyCreationForm sh("Home");
-		Bureaucrat b1("Bureaucrat_1", 120);
+		try {
+			ShrubberyCreationForm sh("Home");
+			Bureaucrat b1("Bureaucrat_1", 120);
 
-		sh.beSigned(b1);
-		b1.executeForm(sh);
+			sh.beSigned(b1);
+			b1.executeForm(sh);
+		} catch (std::exception & e) {
+			std::cout << e.what() << std::endl;
+		} catch(const char * msg) {
+			std::cout << msg << std::endl;
+		}
 	}
 
 	std::cout << "*********************************" << std::endl;
 	{
-		RobotomyRequestForm rb("Home");
-		Bureaucrat b1("Bureaucrat_1", 120);
+		try {
+			RobotomyRequestForm rb("Home");
+			Bureaucrat b1("Bureaucrat_1", 120);
 
-		rb.beSigned(b1);
-		b1.executeForm(rb);
+			rb.beSigned(b1);
+			b1.executeForm(rb);
+		} catch (std::exception & e) {
+			std::cout << e.what() << std::endl;
+		} catch(const char * msg) {
+			std::cout << msg << std::endl;
+		}
 	}
 
 	std::cout << "*********************************" << std::endl;
 	{
-		PresidentialPardonForm pr("Home");
-		Bureaucrat b1("Bureaucrat_1", 120);
+		try {
+			PresidentialPardonForm pr("Home");
+			Bureaucrat b1("Bureaucrat_1", 120);
 
-		pr.beSigned(b1);
-		b1.executeForm(pr);
+			pr.beSigned(b1);
+			b1.executeForm(pr);
+		} catch (std::exception & e) {
+			std::cout << e.what() << std::endl;
+		} catch(const char * msg) {
+			std::cout << msg << std::endl;
+		}
 	}
 }

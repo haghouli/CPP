@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:49:36 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/08 08:17:24 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 07:21:36 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ class Bureaucrat
 		Bureaucrat & operator=(const Bureaucrat & obj);
 		~Bureaucrat();
 
-		std::string getName();
-		int			getGrade();
+		std::string getName() const;
+		int			getGrade() const;
 		void		setGrade(int grade);
 
 		void		increment();
@@ -44,5 +44,7 @@ class Bureaucrat
 				const char *	what() const throw();
 		};
 };
+
+std::ostream & operator<<(std::ostream & os, const Bureaucrat & obj);
 
 #endif

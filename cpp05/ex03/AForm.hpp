@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:54:31 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/06 11:43:17 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:39:23 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@
 class AForm
 {
 	protected:
-		const	std::string name;
-		bool	is_signed;
-		int		grade_to_be_signed;
-		int		grade_to_be_executed;
-		void setGradeToBeSigned(int grade);
-		void setGradeToBeExecuted(int grade);
+		const			std::string name;
+		bool			is_signed;
+		const int		grade_to_be_signed;
+		const int		grade_to_be_executed;
 
 	public:
 		AForm();
@@ -42,14 +40,14 @@ class AForm
 		void		beSigned(const Bureaucrat & obj);
 		void		signForm(const Bureaucrat & obj);
 
-		bool		execute(Bureaucrat const & executor) const;
+		void		execute(Bureaucrat const & executor) const;
 
-		class GradeTooHighException : std::exception {
+		class GradeTooHighException : public std::exception {
 			public:
 				const char * what() const throw();
 		};
 
-		class GradeTooLowException : std::exception {
+		class GradeTooLowException : public std::exception {
 			public:
 				const char * what() const throw();
 		};

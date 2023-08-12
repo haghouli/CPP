@@ -6,10 +6,10 @@
 class Form
 {
 	private:
-		const	std::string name;
-		bool	is_signed;
-		int		grade_to_be_signed;
-		int		grade_to_be_executed;
+		const		std::string name;
+		bool		is_signed;
+		const int 	grade_to_be_signed;
+		const int	grade_to_be_executed;
 
 	public:
 		Form();
@@ -29,12 +29,12 @@ class Form
 		void		beSigned(const Bureaucrat & obj);
 		void		signForm(const Bureaucrat & obj);
 
-		class GradeTooHighException : std::exception {
+		class GradeTooHighException : public std::exception {
 			public:
 				const char * what() const throw();
 		};
 
-		class GradeTooLowException : std::exception {
+		class GradeTooLowException : public std::exception {
 			public:
 				const char * what() const throw();
 		};

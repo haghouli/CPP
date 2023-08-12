@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 10:12:40 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/06 10:15:52 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:28:52 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPar
 	if(this == &obj)
 		return *this;
 	is_signed = obj.is_signed;
-	grade_to_be_signed = obj.grade_to_be_signed;
-	grade_to_be_executed = obj.grade_to_be_executed;
 	return *this;
 }
 

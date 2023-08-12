@@ -6,14 +6,14 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:49:36 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/06 08:55:43 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/12 10:25:45 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "AForm.hpp"
+#include <iostream>
 
 class AForm;
 
@@ -29,8 +29,8 @@ class Bureaucrat
 		Bureaucrat & operator=(const Bureaucrat & obj);
 		~Bureaucrat();
 
-		std::string getName() const ;
-		int			getGrade() const ;
+		std::string getName() const;
+		int			getGrade() const;
 		void		setGrade(int grade);
 
 		void		increment();
@@ -46,7 +46,9 @@ class Bureaucrat
 				const char *	what() const throw();
 		};
 
-		void	executeForm(AForm const & form);
+	void	executeForm(AForm const & form);
 };
+
+std::ostream & operator<<(std::ostream & os, const Bureaucrat & obj);
 
 #endif
