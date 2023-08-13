@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:49:36 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 07:21:36 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:26:53 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+
+class Form;
 
 class Bureaucrat
 {
@@ -43,6 +45,8 @@ class Bureaucrat
 			public:
 				const char *	what() const throw();
 		};
+
+		void	signForm(Form & obj);
 };
 
 std::ostream & operator<<(std::ostream & os, const Bureaucrat & obj);

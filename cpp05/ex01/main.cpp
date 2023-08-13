@@ -6,11 +6,12 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 10:36:38 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 09:42:52 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:27:51 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 int main(void) {
 	

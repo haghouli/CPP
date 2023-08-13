@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:54:40 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 10:35:25 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 10:35:15 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,16 @@ int			AForm::getGRadeToBeExecuted() const {
 	return grade_to_be_executed;
 };
 
-void	AForm::beSigned(const Bureaucrat & obj) {
-	if(obj.getGrade() > grade_to_be_signed)
-		throw AForm::GradeTooLowException();
-	signForm(obj);
+void		AForm::setIsSigned(bool b) {
+	is_signed = b;
 }
 
-void	AForm::signForm(const Bureaucrat & obj) {
-	if(is_signed)
-		std::cout << obj.getName() + " couldn’t sign " + name + " because the form is already signed" << std::endl;
-	else {
-		is_signed = true;
-		std::cout << obj.getName() << " signed " << name << std::endl;
-	}
+void	AForm::beSigned(Bureaucrat & obj) {
+	if(obj.getGrade() > grade_to_be_signed)
+		throw AForm::GradeTooLowException();
+	obj.signForm(*this);
 }
+
 
 void		AForm::execute(Bureaucrat const & executor) const {
 	if(!is_signed)

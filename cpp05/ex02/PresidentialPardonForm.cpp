@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 10:12:40 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 10:28:52 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 11:24:40 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5) { };
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5) {
-	std::cout << target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+	this->target = target;
 };
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm & obj) {
@@ -30,3 +30,11 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPar
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() { }
+
+void		 PresidentialPardonForm::execute(Bureaucrat const & executor) const {
+	if(!is_signed)
+		throw "The form Should be signed first";
+	if(grade_to_be_executed < executor.getGrade())
+		throw AForm::GradeTooLowException();
+	std::cout << target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}

@@ -6,11 +6,12 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:03:17 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 09:09:21 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 09:26:51 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 
 const char * Bureaucrat::GradeTooHighException::what() const throw() {
@@ -65,6 +66,15 @@ void	Bureaucrat::decrement() {
 }
 
 Bureaucrat::~Bureaucrat() { }
+
+void	Bureaucrat::signForm(Form & obj) {
+	if(obj.getIsSigned())
+		std::cout << name + " couldn’t sign " + obj.getName() + " because the form is already signed" << std::endl;
+	else {
+		obj.setIsSigned(true);
+		std::cout << name << " signed " << obj.getName() << std::endl;
+	}
+}
 
 std::ostream & operator<<(std::ostream & os, const Bureaucrat & obj) {
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade();

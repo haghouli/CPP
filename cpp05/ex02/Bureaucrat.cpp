@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 11:03:17 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 10:25:27 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 10:05:38 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ Bureaucrat::~Bureaucrat() { }
 std::ostream & operator<<(std::ostream & os, const Bureaucrat & obj) {
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade();
 	return os;
+}
+
+void	Bureaucrat::signForm(AForm & obj) {
+	if(obj.getIsSigned())
+		std::cout << name + " couldn’t sign " + obj.getName() + " because the form is already signed" << std::endl;
+	else {
+		obj.setIsSigned(true);
+		std::cout << name << " signed " << obj.getName() << std::endl;
+	}
 }
 
 void	Bureaucrat::executeForm(AForm const & form) {

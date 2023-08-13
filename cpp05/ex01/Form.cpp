@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 19:59:31 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 09:42:37 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 10:32:57 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Form::Form(const Form & obj) : name(obj.name) , is_signed(false),grade_to_be_sig
 Form & Form::operator=(const Form & obj) {
 	if(this == &obj)
 		return *this;
+	is_signed = obj.is_signed;
 	return *this;
 }
 
@@ -57,19 +58,14 @@ int			Form::getGRadeToBeExecuted() const {
 	return grade_to_be_executed;
 };
 
-void	Form::beSigned(const Bureaucrat & obj) {
-	if(obj.getGrade() > grade_to_be_signed)
-		throw Form::GradeTooLowException();
-	signForm(obj);
+void		Form::setIsSigned(bool b) {
+	is_signed = b;
 }
 
-void	Form::signForm(const Bureaucrat & obj) {
-	if(is_signed)
-		std::cout << obj.getName() + " couldn’t sign " + name + " because the form is already signed" << std::endl;
-	else {
-		is_signed = true;
-		std::cout << obj.getName() << " signed " << name << std::endl;
-	}
+void	Form::beSigned(Bureaucrat & obj) {
+	if(obj.getGrade() > grade_to_be_signed)
+		throw Form::GradeTooLowException();
+	obj.signForm(*this);
 }
 
 std::ostream & operator<<(std::ostream & os, const Form & obj) {

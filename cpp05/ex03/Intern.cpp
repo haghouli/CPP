@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 11:47:16 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/12 11:31:30 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/13 07:51:35 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,27 @@ Intern & Intern::operator=(const Intern & obj) {
 
 Intern::~Intern() { };
 
-AForm *	Intern::makeForm(std::string formName, std::string target) {
-    AForm *form;
+AForm * Intern::shrubberyCreation(std::string target) {
+    return new ShrubberyCreationForm(target);
+}
 
-    try {
-        if(formName != "shrubbery creation")
-        {
-            try {
-                if(formName != "robotomy request")
-                {
-                    try {
-                        if(formName != "presidential pardon")
-                            throw "Invalid Form";
-                        form = new  PresidentialPardonForm(target);
-                        std::cout << "Intern creates " <<  form->getName() << std::endl;
-                        return form;
-                    } catch(const char * msg) {
-                        throw;
-                    }
-                }
-                form = new  RobotomyRequestForm(target);
-                std::cout << "Intern creates " <<  form->getName() << std::endl;
-                return form;
-            } catch(const char * msg) {
-                throw;
-            }
-        }
-        form = new  ShrubberyCreationForm(target);
-        std::cout << "Intern creates " <<  form->getName() << std::endl;
-        return form;
-    } catch(const char * msg) {
-        throw;
+AForm * Intern::robotomyRequest(std::string target) {
+    return new RobotomyRequestForm(target);
+}
+
+AForm * Intern::presidentialPardon(std::string target) {
+    return new PresidentialPardonForm(target);
+}
+
+AForm *	Intern::makeForm(std::string formName, std::string target) {
+    
+    std::string requests[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+    AForm* (Intern::*forms[3])(std::string) = {&Intern::shrubberyCreation, &Intern::robotomyRequest, &Intern::presidentialPardon};
+
+    for(int i = 0; i < 3; i++) {
+        if(requests[i] == formName)
+            return (this->*forms[i])(target);
     }
+    throw "Invalid form";
     return NULL;
 }
