@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utiles.hpp                                         :+:      :+:    :+:   */
+/*   B.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 08:46:25 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/21 10:01:51 by haghouli         ###   ########.fr       */
+/*   Created: 2023/08/15 09:05:07 by haghouli          #+#    #+#             */
+/*   Updated: 2023/08/15 09:37:44 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef B_HPP
+#define B_HPP
 
-#ifndef UTILES_HPP
-#define UTILES_HPP
+#include "Base.hpp"
 
-#include <iostream>
-#include <string>
-#include <cstdlib>
-#include <limits.h>
-
-bool is_char(std::string s);
-bool is_int(std::string s);
-bool is_float(std::string s);
-bool is_double(std::string s);
-char    detect_type(std::string s);
-
+class B : public Base {
+    public:
+        ~B();
+};
 
 #endif

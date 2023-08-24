@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utiles.hpp                                         :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 08:46:25 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/21 10:01:51 by haghouli         ###   ########.fr       */
+/*   Created: 2023/08/19 12:12:14 by haghouli          #+#    #+#             */
+/*   Updated: 2023/08/24 07:41:53 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#ifndef UTILES_HPP
-#define UTILES_HPP
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 #include <iostream>
-#include <string>
-#include <cstdlib>
-#include <limits.h>
 
-bool is_char(std::string s);
-bool is_int(std::string s);
-bool is_float(std::string s);
-bool is_double(std::string s);
-char    detect_type(std::string s);
+template<typename T> void swap(T & a, T & b) {
+    T tmp = a;
+    a = b;
+    b = tmp;
+};
+
+template<typename T> T min(T a, T b) {
+    return a > b ? b : a; 
+};
+
+template<typename T> T max(T a, T b) {
+    return a > b ? a : b;
+}
 
 
 #endif

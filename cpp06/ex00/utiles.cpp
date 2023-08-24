@@ -6,60 +6,78 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 08:49:41 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/11 11:01:41 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/21 08:41:47 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utiles.hpp"
 
-bool is_int(std::string str) {
+bool is_int(std::string s)
+{
     int start = 0;
-    if(str[0] == '-' || str[0] == '+')
+    if (s[0] == '+' || s[0] == '-')
         start = 1;
-    for(size_t i = start; i < str.length(); i++)
-        if(!isdigit(str[i]))
+    for (size_t i = start; i < s.size(); i++)
+        if (!isdigit(s[i]))
             return false;
     return true;
 }
 
-void    get_char(std::string str) {
-    try {
-        if(is_int(str)) {
-            int n = stoi(str);
-            if(!isprint(n))
-                std::cout << "Non displayable";
-            else
-                std::cout << static_cast<char>(n);
-        } else if(str.length() != 1) 
-            std::cout << "impossible";
-        else if(isalpha(str[0]))
-            std::cout << static_cast<char>(str[0]);
-    }
-    catch(std::exception & e)
-    {
-        std::cout << "impossible";
-    }
+bool is_char(std::string s)
+{
+    if (s.size() == 1 && isalpha(s[0]))
+        return true;
+    return false;
 }
 
-void    get_int(std::string str) {
-    try {
-        if(is_int(str))
-            std::cout << stoi(str);
-        else
-            std::cout << "impossible" ;
-    }
-    catch(std::exception & e)
+bool is_float(std::string s)
+{
+    int start = 0;
+    int count = 0;
+    if(s[0] == '+' || s[0] == '-')
+        start = 1;
+    for (size_t i = start; i < s.size() - 1; i++)
     {
-        std::cout << "imposible";
+        if(!isdigit(s[i]) && s[i] != '.')
+            return false;
+        if(s[i] == '.')
+            count++;
+        if(count > 1)
+            return false;
     }
+    if(s[s.size() - 1] != 'f')
+        return false;
+    return true;
 }
 
-void    get_float(std::string str) {
-    try {
-       std::cout << static_cast<float>(stof(str));
-    }
-    catch(std::exception & e)
+bool is_double(std::string s)
+{
+    int start = 0;
+    int count = 0;
+    if(s[0] == '+' || s[0] == '-')
+        start = 1;
+    for (size_t i = start; i < s.size() ; i++)
     {
-        std::cout << "imposible";
+        if(!isdigit(s[i]) && s[i] != '.')
+            return false;
+        if(s[i] == '.')
+            count++;
+        if(count > 1)
+            return false;
     }
+    return true;
 }
+
+char    detect_type(std::string s) {
+    if(is_char(s))
+        return 'c';
+    else if(is_int(s))
+        return 'i';
+    else if(is_float(s))
+        return 'f';
+    else if(is_double(s))
+        return 'd';
+    else
+        return 'u';
+}
+
