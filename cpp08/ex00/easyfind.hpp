@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 08:23:02 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/26 09:59:18 by haghouli         ###   ########.fr       */
+/*   Created: 2023/08/24 16:28:17 by haghouli          #+#    #+#             */
+/*   Updated: 2023/08/27 19:21:59 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <iterator>
 
-template <typename T1, typename func>
-void iter(T1 arr, unsigned int length, func f) {
-    for(unsigned int i = 0; i < length; i++) {
-        f(arr[i]);
-    }
+
+template<typename T>
+typename T::iterator easyfind(T & t, int toFind) {
+    typename T::iterator  result = std::find(t.begin(), t.end(), toFind);
+    if(result == t.end())
+        throw "invalid value";
+    return result;
 }
 
 #endif

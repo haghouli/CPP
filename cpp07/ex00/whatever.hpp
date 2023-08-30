@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 12:12:14 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/24 07:41:53 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/25 07:14:17 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ template<typename T> T min(T a, T b) {
 template<typename T> T max(T a, T b) {
     return a > b ? a : b;
 }
-
 
 #endif

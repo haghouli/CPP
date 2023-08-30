@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/19 12:09:47 by haghouli          #+#    #+#              #
-#    Updated: 2023/08/26 09:50:46 by haghouli         ###   ########.fr        #
+#    Created: 2023/08/24 16:27:47 by haghouli          #+#    #+#              #
+#    Updated: 2023/08/25 17:04:00 by haghouli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPPFLAGS        = -Wall -Wextra -Werror
 CXX             = c++ -std=c++98
-NAME            = ex01
+NAME            = ex00
 
 CPP_FILES       = main.cpp
 

@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 09:36:24 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/24 08:48:37 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:32:02 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define ARRAY_HPP
 
 #include<iostream>
+
+#include <stdlib.h>
+#include <time.h>
 
 template<typename T> class Array {
     private:
@@ -30,27 +33,19 @@ template<typename T> class Array {
         }
 
         Array & operator=(const Array & obj) {
-            if(this = &obj)
-                return *this;
-            this->size = obj.s;
-            this->a = new T[obj.size()];
-            for (size_t i = 0; i < obj.size(); i++)
-                this->a[i] = obj.a[i];
+            if(this != &obj) {
+                this->s = obj.s;
+                this->a = new T[obj.size()];
+                for (size_t i = 0; i < obj.size(); i++)
+                    this->a[i] = obj.a[i];
+            }
             return *this;
         }
 
-        unsigned int operator[](unsigned int i) {
-            try {
-                if(i >= size)
-                    throw "index out of bounds";
-            } catch(std::string & msg) {
-                std::cout << msg << std::endl;
-            }
+        int & operator[](int i) const {
+            if(static_cast<unsigned int>(i) >= s)
+                throw OutOfBound();
             return a[i];
-        }
-
-        void operator new(unsigned int size) {
-            
         }
 
         unsigned int size() const {
@@ -60,6 +55,12 @@ template<typename T> class Array {
         ~Array<T>(){
             delete [] a;
         }
+
+        class OutOfBound : public std::exception {
+            const char * what() const throw() {
+                return "index out of bounds";
+            }
+        };
 };
 
 #endif
