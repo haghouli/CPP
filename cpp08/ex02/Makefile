@@ -6,12 +6,12 @@
 #    By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/24 16:27:47 by haghouli          #+#    #+#              #
-#    Updated: 2023/08/30 07:06:17 by haghouli         ###   ########.fr        #
+#    Updated: 2023/08/31 12:41:01 by haghouli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPPFLAGS        = -Wall -Wextra -Werror
-CXX             = g++ -std=c++98
+CXX             = c++ -std=c++98
 NAME            = ex02
 
 CPP_FILES       = main.cpp

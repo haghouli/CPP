@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 19:38:40 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/28 15:21:48 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:45:05 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ class Span {
         ~Span();
         
         void addNumber(int n);
-
-        void show();
 
         template<typename T>
         void    addNumber(T begin, T end) {

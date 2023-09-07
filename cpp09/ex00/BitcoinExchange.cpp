@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 07:49:22 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/30 16:16:38 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/09/02 11:55:54 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,10 @@ std::string BitcoinExchange::get_date(std::string s) {
     std::string day = s.substr(8, 2);
     if(!is_number(year) || !is_number(month) || !is_number(day))
         return "";
-    if(year < "2009" || year > "2022")
+    if(year < "2009" || year > "2022" || month < "01" || month > "12" || day < "01" || day > "31") {
+        std::cout << "Error: bad input => " << s << std::endl;
         return "";
-    if(month < "01" || month > "12")
-        return "";
-    if(day < "01" || day > "31")
-        return "";
+    }
     return s;
 }
 
@@ -75,14 +73,19 @@ void    BitcoinExchange::file_data() {
 }
 
 std::string BitcoinExchange::get_value(std::string s) {
-    if(s[0] == '-')
-        
-    if(!is_number(s)) {
+    if(s[0] == '-') {
+        std::cout << "Error: not a positive number." <<  std::endl;
+        return "";
+    }
+    if(!is_number(s))
         if(!isFloat(s))
             return "";
-    }
-    if(s > "1000")
+    long n = strtol(s.c_str(), NULL, 10);
+    bool b = errno == ERANGE;
+    if(b || n > INT_MAX || atoi(s.c_str()) > 1000) {
+        std::cout << "Error: too large a number." << std::endl;
         return "";
+    }
     return s;
 }
 
@@ -106,15 +109,22 @@ bool    BitcoinExchange::parse_file() {
         if(str.empty())
             break;
         if(str.size() < 14 || str[10] != ' ' || str[12] != ' ')
-            std::cout << "Format error" << std::endl;
+            std::cout << "Error: bad input => " << str << std::endl;
         else {
             std::string date = get_date(str.substr(0, 10));
-            std::string value = get_value(str.substr(12));
-            std::map<std::string, std::string>::iterator it = data.find(date);
-            if(it != data.end())
-                std::cout << "YES" << std::endl;
-            else
-                std::cout << "NO" << std::endl;
+            std::string value;
+            if(!date.empty())
+                value = get_value(str.substr(13));
+            if(!date.empty() && !value.empty()) {
+                std::map<std::string, std::string>::iterator it = data.find(date);
+                if(it == data.end()) {
+                    it = data.lower_bound(date);
+                    it--;
+                }
+                float result = atof(value.c_str()) * atof(it->second.c_str());
+                // std::cout << it->second << std::endl;
+                std::cout << date << " => " << value << " = "  << result << std::endl;
+            }
         }
     }
     return true;

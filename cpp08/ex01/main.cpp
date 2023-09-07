@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:37:21 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/28 15:51:46 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:44:44 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int main(void) {
             Span sp(15000);
             for(int i = 0; i < 15000; i++)
                 sp.addNumber(i);
-            sp.show();
             std::cout << "shortest span -> " << sp.shortestSpan() << std::endl;
             std::cout << "longest span -> " << sp.longestSpan() << std::endl;
         } catch(std::exception & e) {
@@ -71,8 +70,6 @@ int main(void) {
                 v.push_back(i);
 
             sp.addNumber(v.begin(), v.end());
-            sp.show();
-
         } catch(std::exception & e) {
             std::cout << e.what() << std::endl;
         }

@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 07:49:20 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/30 15:31:21 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/09/02 11:06:40 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <fstream>
 #include <map>
+#include <climits>
 
 class BitcoinExchange {
 

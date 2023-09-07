@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/24 16:27:47 by haghouli          #+#    #+#              #
-#    Updated: 2023/08/31 12:41:20 by haghouli         ###   ########.fr        #
+#    Created: 2023/08/29 18:42:03 by haghouli          #+#    #+#              #
+#    Updated: 2023/09/07 12:30:16 by haghouli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPPFLAGS        = -Wall -Wextra -Werror
-CXX             = c++ -std=c++98
-NAME            = ex00
+CXX             = c++ -std=c++98 -fsanitize=address -g3
+NAME            = PmergeMe
 
-CPP_FILES       = main.cpp
+CPP_FILES       = main.cpp PmergeMe.cpp
 
 CPP_OBJS        = $(CPP_FILES:.cpp=.o)
 

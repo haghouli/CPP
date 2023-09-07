@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:55:26 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/30 07:40:21 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/31 16:49:09 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <stack>
+#include <algorithm>
 #include <iterator>
 #include <vector>
 
@@ -32,12 +33,28 @@ class MutantStack : public std::stack<T> {
                 return std::stack<T>::c.end();
         }
 
-        iterator begin() const {
+        const_iterator begin() const {
                 return std::stack<T>::c.begin();
         }
 
-        iterator end() const {
+        const_iterator end() const {
                 return std::stack<T>::c.end();
+        }
+
+        iterator rbegin() {
+                return std::stack<T>::c.rbegin();
+        }
+
+        iterator rend() {
+                return std::stack<T>::c.rend();
+        }
+
+        const_iterator rbegin() const {
+                return std::stack<T>::c.rbegin();
+        }
+
+        const_iterator rend() const {
+                return std::stack<T>::c.rend();
         }
     
 };

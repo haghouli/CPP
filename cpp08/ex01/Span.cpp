@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 07:07:06 by haghouli          #+#    #+#             */
-/*   Updated: 2023/08/28 15:19:57 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:44:58 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,4 @@ unsigned int Span::longestSpan() {
     std::vector<int> tmp =  span;
     std::sort(tmp.begin(), tmp.end());
     return (*(tmp.end() - 1) - *tmp.begin());
-}
-
-void Span::show() {
-    std::vector<int>::iterator it;
-    for(it = span.begin(); it != span.end(); it++)
-        std::cout << *it << " ";
-    std::cout <<  std::endl;
 }
