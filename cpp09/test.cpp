@@ -7,6 +7,7 @@
 #include <vector>
 #include <string.h>
 #include <deque>
+#include <utility>
 
 using namespace std;
 
@@ -76,13 +77,35 @@ int main(void){
 	// }
 
 	{
-		deque<int> l;
-		l.push_back(1);
-		l.push_back(10);
-		l.push_back(10);
-		l.push_back(90);
-		l.push_back(4);
-		for(int i = 0; i < l.size(); i++)
-			cout << l[i]  << endl;
+		// deque<pair<int, int> > d;
+		// pair<int, int> a {12, 45};
+		// d.push_back(a);
+		// pair<int, int> b {7, 2};
+		// d.push_back(b);
+		// pair<int, int> c {98, 5};
+		// d.push_back(c);
+		// pair<int, int> t {17, 4};
+		// d.push_back(t);
+		// pair<int, int> e {3, 23};
+		// cout << "Befor" << endl;
+		// for(auto it = d.begin(); it != d.end(); it++)
+		// 	cout << (*it).first << " - " << (*it).second << endl;
+		// cout << "After" << endl;
+		// sort(d.begin(), d.end());
+		// for(auto it = d.begin(); it != d.end(); it++)
+		// 	cout << (*it).first << " - " << (*it).second << endl;
+		// d.push_back(e);
+		
+	}
+
+	{
+		vector<int> v {1,2, 3,4,5,6,7,8};
+		vector<int>::iterator it = v.begin();
+
+		for(; it != v.end(); it++)
+			(*it++) = *it + 10;
+
+		for(const auto & e : v)
+			cout << e << endl;
 	}
 }

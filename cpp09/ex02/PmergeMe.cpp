@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 10:09:13 by haghouli          #+#    #+#             */
-/*   Updated: 2023/09/08 16:32:05 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/09/08 17:44:31 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ std::deque<std::pair<int, int> > PmergeMe::make_pairs() {
             std::pair<int, int> p;
             p.first = *(it++);
             p.second = *it;
+            if(p.first > p.second)
+                std::swap(p.first, p.second);
             pairs.push_back(p);
         }
     }
     if(nums.size() % 2) {
         last = *(--it);
     }
-    std::sort(pairs.begin(), pairs.end());
-    std::deque<std::pair<int, int> >::iterator it2 = pairs.begin();
-    for(; it2 != pairs.end(); it2++)
-        std::cout << (*it2).first << " <-> " << (*it2).second << std::endl;
-    std::cout << "last -> " << last << std::endl; 
+    // std::deque<std::pair<int, int> >::iterator it2 = pairs.begin();
+    // for(; it2 != pairs.end(); it2++)
+    //     std::cout << (*it2).first << " - " << (*it2).second << std::endl;
     return pairs;
 }
 
