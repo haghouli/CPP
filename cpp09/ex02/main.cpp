@@ -6,7 +6,7 @@
 /*   By: haghouli <haghouli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 18:38:20 by haghouli          #+#    #+#             */
-/*   Updated: 2023/09/07 08:35:13 by haghouli         ###   ########.fr       */
+/*   Updated: 2023/09/08 16:23:47 by haghouli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int main(int, char **av) {
     {
         PmergeMe p(av);
         p.sort();
-        p.show();
-        
     }
     catch(const  char * msg)
     {
