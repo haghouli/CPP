@@ -15,27 +15,27 @@
 Rpn::Rpn(char * av) {
     std::string str = "+-/*0123456789";
     char * s = strtok(av, " ");
-    v.push_back(s);
+    lst.push_back(s);
     while (1)
     {
         s = strtok(NULL, " ");
         if(s == NULL)
             break;
-        v.push_back(s);
+        lst.push_back(s);
         int b = -1;
-        b = str.find(v.back()[0]);
-        if(v.back().length() != 1 || b == -1) {
+        b = str.find(lst.back()[0]);
+        if(lst.back().length() != 1 || b == -1) {
             throw "Error";
         }
     }
 }
 
 int Rpn::claculation() {
-    std::vector<std::string>::iterator it = v.begin();
+    std::list<std::string>::iterator it = lst.begin();
     std::string s = "+-*/";
-    if(!isdigit((*it)[0]) || !isdigit((*(it + 1))[0]))
+    if(!isdigit((*it)[0]) || !isdigit((*std::next(it))[0]))
         throw "Error";
-    for(; it != v.end(); it++) {
+    for(; it != lst.end(); it++) {
         int b = -1;
         b = s.find(*it);
         if(b == -1)

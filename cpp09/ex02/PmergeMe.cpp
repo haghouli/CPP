@@ -23,10 +23,24 @@ PmergeMe::PmergeMe(char **av) {
     }
 }
 
+void PmergeMe::do_insetion(std::deque<std::pair<int, int> > pairs) {
+    std::deque<std::pair<int, int> >::iterator it = pairs.begin();
+    for(; it != pairs.end(); it++) {
+        std::deque<int>::iterator it2 =  std::lower_bound(sorted.begin(), sorted.end(), it->second);
+        sorted.insert(it2, it->second);
+    }
+    if(last != -1) {
+        std::deque<int>::iterator it2 =  std::lower_bound(sorted.begin(), sorted.end(), last);
+        sorted.insert(it2, last);
+    }
+}
+
 void PmergeMe::show() {
-    std::deque<int>::iterator it = nums.begin();
-    for(; it != nums.end(); it++)
+    std::deque<int>::iterator it = sorted.begin();
+    for(; it != sorted.end(); it++)
         std::cout << *it << " ";
+    std::cout << std::endl;
+    std::cout << "is sotred -> " << std::is_sorted(sorted.begin(), sorted.end()) << std::endl;
 }
 
 std::deque<std::pair<int, int> > PmergeMe::make_pairs() {
@@ -46,14 +60,45 @@ std::deque<std::pair<int, int> > PmergeMe::make_pairs() {
     if(nums.size() % 2) {
         last = *(--it);
     }
-    // std::deque<std::pair<int, int> >::iterator it2 = pairs.begin();
-    // for(; it2 != pairs.end(); it2++)
-    //     std::cout << (*it2).first << " - " << (*it2).second << std::endl;
     return pairs;
+}
+
+void    PmergeMe::merge(int start, int mid, int end) {
+    int s1 = start;
+    int s2 = mid;
+    std::deque<int> d;
+    while (s1 < mid && s2 < end)
+    {
+        if(sorted[s1] < sorted[s2])
+            d.push_back(sorted[s1++]);
+        else
+            d.push_back(sorted[s2++]);
+    }
+    while (s1 < mid)
+        d.push_back(sorted[s1++]);
+    while (s2 < end)
+        d.push_back(sorted[s2++]);
+    std::deque<int>::iterator it = d.begin();
+    for(int i = start; i < end; i++)
+        sorted[i] = *(it++);
+}
+
+void    PmergeMe::merge_sort(int start, int end) {
+    int mid = (end + start) / 2;
+    if(end - start <= 1)
+        return;
+    merge_sort(start, mid);
+    merge_sort(mid, end);
+    merge(start, mid, end);
 }
 
 void    PmergeMe::sort() {
     std::deque<std::pair<int, int> > pairs = make_pairs();
+    std::deque<std::pair<int, int> >::iterator it = pairs.begin();
+    for(; it != pairs.end(); it++)
+        sorted.push_back(it->first);
+    merge_sort(0, sorted.size());
+    do_insetion(pairs);
 }
 
 bool    is_int(char *str) {

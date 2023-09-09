@@ -11,7 +11,8 @@
 # **************************************************************************** #
 
 CPPFLAGS        = -Wall -Wextra -Werror
-CXX             = g++ -std=c++98
+CXX             = c++ -std=c++98
+NAME			= RPN
 
 CPP_FILES       = main.cpp RPN.cpp
 

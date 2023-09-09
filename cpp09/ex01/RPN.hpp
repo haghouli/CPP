@@ -17,12 +17,13 @@
 #include <algorithm>
 #include <vector>
 #include <stack>
+#include <list>
 #include <iterator>
 #include <string.h>
 
 class   Rpn {
     private:
-        std::vector<std::string> v;
+        std::list<std::string> lst;
         std::stack<int> stk;
     
     public:

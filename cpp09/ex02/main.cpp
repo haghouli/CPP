@@ -18,6 +18,7 @@ int main(int, char **av) {
     {
         PmergeMe p(av);
         p.sort();
+        p.show();
     }
     catch(const  char * msg)
     {

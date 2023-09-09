@@ -27,6 +27,10 @@ class PmergeMe {
         std::deque<int> nums;
         int last;
         std::deque<std::pair<int, int> > make_pairs();
+        std::deque<int> sorted;
+        void    do_insetion(std::deque<std::pair<int, int> >);
+        void    merge_sort(int start, int end);
+        void    merge(int start, int mid, int end);
 
     public:
         void    show();

@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CPPFLAGS        = -Wall -Wextra -Werror
-CXX             = c++ -std=c++98 -fsanitize=address -g3
+CXX             = c++ -std=c++98
 NAME            = PmergeMe
 
 CPP_FILES       = main.cpp PmergeMe.cpp
